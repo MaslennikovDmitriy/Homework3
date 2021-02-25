@@ -35,54 +35,54 @@ int main(int argc, char** argv)
 	setlocale(LC_ALL, "Russian");
 
 	Store store;
-	Rec r1 = { "Jonathan Joestar", "+442089786564", "Англия" };
-	Rec r2 = { "Joseph Joestar", "18703067492", "США" };
-	Rec r3 = { "Jotaro Kujo", "+819067554761", "Япония" };
-	Rec r4 = { "Josuke Higashikata", "+818963478452", "Морио" };
-	Rec r5 = { "Giorno Giovanna", "+390669824589", "Италия" };
-	Rec r6 = { "Jolyne Kujo", "+819067554762", "Япония" };
+	Rec r1 = { "Jonathan Joestar", "+442089786564", "РђРЅРіР»РёСЏ" };
+	Rec r2 = { "Joseph Joestar", "18703067492", "РЎРЁРђ" };
+	Rec r3 = { "Jotaro Kujo", "+819067554761", "РЇРїРѕРЅРёСЏ" };
+	Rec r4 = { "Josuke Higashikata", "+818963478452", "РњРѕСЂРёРѕ, РЇРїРѕРЅРёСЏ" };
+	Rec r5 = { "Giorno Giovanna", "+390669824589", "РС‚Р°Р»РёСЏ" };
+	Rec r6 = { "Jolyne Kujo", "+819067554762", "РЇРїРѕРЅРёСЏ" };
 	store.insert(r1);
 	store.insert(r2);
 	store.insert(r3);
 	store.insert(r4);
 	store.insert(r5);
 	store.insert(r6);
-	std::string find_id = "Giorno Giovanna"; // поиск по имени
+	std::string find_id = "Giorno Giovanna"; // РїРѕРёСЃРє РїРѕ РёРјРµРЅРё
 	typedef Store::index<Rec::ByName>::type List;
 	const List& ls = store.get<Rec::ByName>();
 	List::const_iterator it = ls.find(find_id);
 	if (it != ls.end())
 	{
-		std::cout << "Адрес: " << (*it).addr << std::endl;
-		std::cout << "Номер: " << (*it).phone << std::endl;
+		std::cout << "РђРґСЂРµСЃ: " << (*it).addr << std::endl;
+		std::cout << "РќРѕРјРµСЂ: " << (*it).phone << std::endl;
 	}
 	std::cout << std::endl;
 
-	std::string find_phone = "18703067492"; // поиск по номеру
+	std::string find_phone = "18703067492"; // РїРѕРёСЃРє РїРѕ РЅРѕРјРµСЂСѓ
 	Store::index<Rec::ByPhone>::type::iterator it0, it1;
 	tie(it0, it1) = store.get<Rec::ByPhone>().equal_range(find_phone);
 	while (it0 != it1)
 	{
-		std::cout << "Имя: " << (*it0).name << std::endl;
+		std::cout << "РРјСЏ: " << (*it0).name << std::endl;
 		++it0;
 	}
 	std::cout << std::endl;
 
-	std::string find_address = "Морио"; // поиск по адресу
+	std::string find_address = "РњРѕСЂРёРѕ, РЇРїРѕРЅРёСЏ"; // РїРѕРёСЃРє РїРѕ Р°РґСЂРµСЃСѓ
 	Store::index<Rec::ByAddr>::type::iterator it2, it3;
 	tie(it2, it3) = store.get<Rec::ByAddr>().equal_range(find_address);
 	while (it2 != it3)
 	{
-		std::cout << "Имя: " << (*it2).name << std::endl;
+		std::cout << "РРјСЏ: " << (*it2).name << std::endl;
 		++it2;
 	}
 
 	std::cout << std::endl;
 	size_t count = 1;
-	for (auto it = store.begin(); it != store.end(); ++it) // вывод сортированной по именам информации
+	for (auto it = store.begin(); it != store.end(); ++it) // РІС‹РІРѕРґ СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕР№ РїРѕ РёРјРµРЅР°Рј РёРЅС„РѕСЂРјР°С†РёРё
 	{
-		std::cout << count << "-ый человек:" << std::endl;
-		std::cout << "Имя: " << (*it).name << ", номер: " << (*it).phone << ", адрес: " << (*it).addr << ";" << std::endl;
+		std::cout << count << "-С‹Р№ С‡РµР»РѕРІРµРє:" << std::endl;
+		std::cout << "РРјСЏ: " << (*it).name << ", РЅРѕРјРµСЂ: " << (*it).phone << ", Р°РґСЂРµСЃ: " << (*it).addr << ";" << std::endl;
 		count++;
 	}
 
