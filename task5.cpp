@@ -41,12 +41,14 @@ int main(int argc, char** argv)
 	Rec r4 = { "Josuke Higashikata", "+818963478452", "Морио, Япония" };
 	Rec r5 = { "Giorno Giovanna", "+390669824589", "Италия" };
 	Rec r6 = { "Jolyne Kujo", "+819067554762", "Япония" };
+	Rec r7 = { "Speedwagon Foundation", "+88005553535", "Англия" };
 	store.insert(r1);
 	store.insert(r2);
 	store.insert(r3);
 	store.insert(r4);
 	store.insert(r5);
 	store.insert(r6);
+	store.insert(r7);
 	std::string find_id = "Giorno Giovanna"; // поиск по имени
 	typedef Store::index<Rec::ByName>::type List;
 	const List& ls = store.get<Rec::ByName>();
