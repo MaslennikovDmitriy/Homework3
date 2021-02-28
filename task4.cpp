@@ -3,13 +3,13 @@
 #include <clocale>
 #include <sstream>
 #include <stdlib.h>
+#include <fstream>
 
-const char* ar[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-        "t", "u", "v", "w", "x", "y", "z" };
+const int N = 300;
 
-void check(std::vector <size_t> hash1)
+void check(std::vector <size_t> hash1, std::vector <size_t> counter)
 {
-    for (int k = 1; k < 100; k++)
+    for (int k = 1; k < N; k++)
     {
         std::vector <size_t> Rep1;
         int count = 0;
@@ -39,6 +39,7 @@ void check(std::vector <size_t> hash1)
         }
 
         std::cout << "N = " << k + 1 << "; количество коллизий: " << count << std::endl;
+        counter[k] = count;
     }
 }
 
@@ -185,83 +186,92 @@ unsigned int APHash(const char* str, unsigned int length)
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    std::vector <std::string> str_test(100);
+    char ar[26];
+    for (size_t i = 0; i < 26; i++)
+    {
+        static int count = 97;
+        ar[i] = (char)count;
+        count++;
+        //std::cout << ar[i] << std::endl;
+    }
+    std::vector <std::string> str_test(N);
+    std::vector <size_t> counter(N);
     for (size_t j = 0; j < str_test.size(); j++)
     {
-        for (size_t i = 0; i < 6; i++)
+        for (size_t i = 0; i < 5; i++)
         {
             str_test[j] += ar[rand() % 25];
         }
     }
-    //for (size_t j = 0; j < str_test.size(); j++)
-    //{
-    //    cout << str_test[j] << endl;
-    //}
+    /*for (size_t j = 0; j < str_test.size(); j++)
+    {
+        std::cout << str_test[j] << std::endl;
+    }*/
 
-    std::vector <size_t> hash1(100);
+    std::vector <size_t> hash1(N);
     /* for (size_t j = 0; j < str_test.size(); j++)
      {
-         hash1[j] = RSHash(str_test[j].c_str(), 100);
+         hash1[j] = RSHash(str_test[j].c_str(), N);
      }
      check(hash1);
      std::cout << std::endl;*/
 
      //for (size_t j = 0; j < str_test.size(); j++)
      //{
-     //    hash1[j] = JSHash(str_test[j].c_str(), 100);
+     //    hash1[j] = JSHash(str_test[j].c_str(), N);
      //}
      //check(hash1);
      //std::cout << std::endl;
 
      //for (size_t j = 0; j < str_test.size(); j++)
      //{
-     //    hash1[j] = PJWHash(str_test[j].c_str(), 100);
+     //    hash1[j] = PJWHash(str_test[j].c_str(), N);
      //}
      //check(hash1);
      //std::cout << std::endl;
 
      /*for (size_t j = 0; j < str_test.size(); j++)
      {
-         hash1[j] = ELFHash(str_test[j].c_str(), 100);
+         hash1[j] = ELFHash(str_test[j].c_str(), N);
      }
      check(hash1);
      std::cout << std::endl;*/
 
      /*for (size_t j = 0; j < str_test.size(); j++)
      {
-         hash1[j] = BKDRHash(str_test[j].c_str(), 100);
+         hash1[j] = BKDRHash(str_test[j].c_str(), N);
      }
      check(hash1);
      std::cout << std::endl;*/
 
      /*for (size_t j = 0; j < str_test.size(); j++)
      {
-         hash1[j] = SDBMHash(str_test[j].c_str(), 100);
+         hash1[j] = SDBMHash(str_test[j].c_str(), N);
      }
      check(hash1);
      std::cout << std::endl;*/
 
      /*for (size_t j = 0; j < str_test.size(); j++)
      {
-         hash1[j] = DJBHash(str_test[j].c_str(), 100);
+         hash1[j] = DJBHash(str_test[j].c_str(), N);
      }
      check(hash1);
      std::cout << std::endl;*/
 
      /*for (size_t j = 0; j < str_test.size(); j++)
      {
-         hash1[j] = DEKHash(str_test[j].c_str(), 100);
+         hash1[j] = DEKHash(str_test[j].c_str(), N);
      }
      check(hash1);
      std::cout << std::endl;*/
 
     for (size_t j = 0; j < str_test.size(); j++)
     {
-        hash1[j] = APHash(str_test[j].c_str(), 100);
+        hash1[j] = APHash(str_test[j].c_str(), N);
+        //std::cout << hash1[j] << std::endl;
     }
-    check(hash1);
+    check(hash1, counter);
     std::cout << std::endl;
-
     system("pause");
     return EXIT_SUCCESS;
 }
