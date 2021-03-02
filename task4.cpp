@@ -38,7 +38,7 @@ void check(std::vector <size_t> hash1, std::vector <size_t> counter)
             }
         }
 
-        std::cout << "N = " << k + 1 << "; êîëè÷åñòâî êîëëèçèé: " << count << std::endl;
+        cout << "N = " << k + 1 << "; ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ¾Ð»Ð»Ð¸Ð·Ð¸Ð¹: " << count << endl;
         counter[k] = count;
     }
 }
