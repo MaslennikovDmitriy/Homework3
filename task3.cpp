@@ -72,7 +72,7 @@ int main()
             }
         }
 
-        cout << "N = " << k + 1 << "; êîëè÷åñòâî êîëëèçèé: " << count << endl;
+        cout << "N = " << k + 1 << "; ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ĞºĞ¾Ğ»Ğ»Ğ¸Ğ·Ğ¸Ğ¹: " << count << endl;
     }
     system("pause");
     return EXIT_SUCCESS;
