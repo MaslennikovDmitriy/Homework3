@@ -23,7 +23,7 @@ int main()
     std::cout << hash(563.88) << std::endl;
     auto end = std::chrono::system_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - now);
-    std::cout << "Âðåìÿ ðàáîòû ôóíêöèè: " << elapsed.count() << " (ìñ)" << std::endl;
+    std::cout << "Время работы функции: " << elapsed.count() << " (мс)" << std::endl;
 
     std::vector <int> hashes(N);
     std::vector <double> v(N);
