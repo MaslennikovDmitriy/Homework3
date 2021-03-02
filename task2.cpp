@@ -70,7 +70,7 @@ int main()
             }
         }
 
-        std::cout << "N = " << k + 1 << "; êîëè÷åñòâî êîëëèçèé: " << count << std::endl;
+        std::cout << "N = " << k + 1 << "; количество коллизий: " << count << std::endl;
     }
     std::cout << std::endl;
     std::sort(hashes.begin(), hashes.end()); // исследование равномерности
