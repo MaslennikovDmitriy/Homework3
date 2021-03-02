@@ -23,7 +23,7 @@ int main()
     std::cout << hash(563.88) << std::endl;
     auto end = std::chrono::system_clock::now();
     auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - now);
-    std::cout << "Âğåìÿ ğàáîòû ôóíêöèè: " << elapsed.count() << " (ìñ)" << std::endl;
+    std::cout << "Ã‚Ã°Ã¥Ã¬Ã¿ Ã°Ã Ã¡Ã®Ã²Ã» Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¨: " << elapsed.count() << " (Ã¬Ã±)" << std::endl;
 
     std::vector <int> hashes(N);
     std::vector <double> v(N);
@@ -31,14 +31,14 @@ int main()
     for (int i = 0; i < N; i++)
     {
         srand(time(0) * f++ * 150);
-        v[i] = rand() % 10000; // äëÿ èññëåäîâàíèÿ ÷èñëà êîëëèçèé â çàâèñèìîñòè îò êîëè÷åñòâà ÷èñåë
-        //v[i] = i; // äëÿ èññëåäîâàíèÿ ğàâíîìåğíîñòè
+        v[i] = rand() % 10000; // Ğ´Ğ»Ñ Ğ¸ÑÑĞ»ĞµĞ´Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ Ñ‡Ğ¸ÑĞ»Ğ° ĞºĞ¾Ğ»Ğ»Ğ¸Ğ·Ğ¸Ğ¹ Ğ² Ğ·Ğ°Ğ²Ğ¸ÑĞ¸Ğ¼Ğ¾ÑÑ‚Ğ¸ Ğ¾Ñ‚ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ° Ñ‡Ğ¸ÑĞµĞ»
+        //v[i] = i; // Ğ´Ğ»Ñ Ğ¸ÑÑĞ»ĞµĞ´Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ Ñ€Ğ°Ğ²Ğ½Ğ¾Ğ¼ĞµÑ€Ğ½Ğ¾ÑÑ‚Ğ¸
         hashes[i] = hash(v[i]);
         std::cout << hashes[i] << std::endl;
     }
     std::cout << std::endl;
 
-    for (int k = 1; k < N; k++) // èññëåäîâàíèå êîëè÷åñòâà êîëëèçèé
+    for (int k = 1; k < N; k++) // Ğ¸ÑÑĞ»ĞµĞ´Ğ¾Ğ²Ğ°Ğ½Ğ¸Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ° ĞºĞ¾Ğ»Ğ»Ğ¸Ğ·Ğ¸Ğ¹
     {
         std::vector <size_t> Rep;
         int count = 0;
@@ -70,10 +70,10 @@ int main()
             }
         }
 
-        std::cout << "N = " << k + 1 << "; êîëè÷åñòâî êîëëèçèé: " << count << std::endl;
+        std::cout << "N = " << k + 1 << "; ÃªÃ®Ã«Ã¨Ã·Ã¥Ã±Ã²Ã¢Ã® ÃªÃ®Ã«Ã«Ã¨Ã§Ã¨Ã©: " << count << std::endl;
     }
     std::cout << std::endl;
-    std::sort(hashes.begin(), hashes.end()); // èññëåäîâàíèå ğàâíîìåğíîñòè
+    std::sort(hashes.begin(), hashes.end()); // Ğ¸ÑÑĞ»ĞµĞ´Ğ¾Ğ²Ğ°Ğ½Ğ¸Ğµ Ñ€Ğ°Ğ²Ğ½Ğ¾Ğ¼ĞµÑ€Ğ½Ğ¾ÑÑ‚Ğ¸
     int h = hashes[0];
     int max = (hashes[N - 1] - hashes[0]) / 10;
     int count = 0;
@@ -88,7 +88,7 @@ int main()
         {
             h = h + max;
             j++;
-            std::cout << "Íà " << j << "-îì îòğåçêå: " << count << " çíà÷åíèé õıø-ôóíêöèè;" << std::endl;
+            std::cout << "ĞĞ° " << j << "-Ğ¾Ğ¼ Ğ¾Ñ‚Ñ€ĞµĞ·ĞºĞµ: " << count << " Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğ¹ Ñ…ÑÑˆ-Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ğ¸;" << std::endl;
             count = 0;
         }
     }
